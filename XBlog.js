@@ -1,4 +1,4 @@
-function init_blog config_path){
+function init_blog (config_path){
   var result = new Object;
   var xmlhttp=new XMLHttpRequest();
   xmlhttp.open("GET",config_path,true);
