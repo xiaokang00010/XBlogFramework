@@ -30,6 +30,7 @@ function init_blog (config_path){
 function parseURIArg(blog_obj){
   var action = getQueryVariable("action");
   var issue_id = getQueryVariable("issue_id");
-  console.log("action: " + action);
-  //if(action == "")  window.location = blog_obj.config["root"] + "index.html?action=home";
+  //console.log("action: " + action);
+  if(action == false)  window.location = blog_obj.config["root"] + "index.html?action=home";
+  
 }
