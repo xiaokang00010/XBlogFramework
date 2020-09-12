@@ -10,5 +10,8 @@
   </body>
   <script>
     var blogobj = init_blog("src/config.json");
+    if(blogobj != undefined){
+      parseURIArg(blogobj);
+    }
   </script>
 </html>
