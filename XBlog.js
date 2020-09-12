@@ -27,7 +27,7 @@ function init_blog (config_path){
 }
 
 function parseURIArg(blog_obj){
-  string action = getQueryVariable("action");
-  string issue_id = getQueryVariable("issue_id");
+  var action = getQueryVariable("action");
+  var issue_id = getQueryVariable("issue_id");
   if(action == "")  window.location = blog_obj.config["root"] + "index.html?action=home";
 }
