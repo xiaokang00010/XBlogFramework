@@ -24,6 +24,7 @@ function init_blog (config_path){
   console.log(json);
   result.config = json;
   console.log("Framework Info: Blog init success!\n");
+  return result;
 }
 
 function parseURIArg(blog_obj){
