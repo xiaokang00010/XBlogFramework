@@ -5,6 +5,6 @@ function init_blog (config_path){
   xmlhttp.send(null);
   var toWrite = document.getElementById("embedded");
   if(toWrite == null){
-    document.body = "<font color=\"red\"><b>Framework Error: </b></font>Can not fetch config file!";
+    document.body.innerHTML = "<font color=\"red\"><b>Framework Error: </b></font>Can not fetch config file!";
   }
 }
