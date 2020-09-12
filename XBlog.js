@@ -1,3 +1,4 @@
+var toWrite = document.getElementById("embedded");
 function init_blog (config_path){
   var result = new Object;
   var xmlhttp=new XMLHttpRequest();
@@ -6,5 +7,8 @@ function init_blog (config_path){
   var toWrite = document.getElementById("embedded");
   if(toWrite == null){
     document.body.innerHTML = "<font color=\"red\"><b>Framework Error: </b></font>Can not fetch config file!";
+    return undefined;
   }
+  var json = JSON.parse(xmlhttp.responseText);
+  console.log(json);
 }
