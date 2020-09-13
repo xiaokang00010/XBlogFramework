@@ -1,4 +1,11 @@
 var toWrite = document.getElementById("embedded");
+function XHR(var type,var url){
+  var xmlhttp=new XMLHttpRequest();
+  xmlhttp.open(type,url,false);
+  xmlhttp.send(null);
+  return xmlhttp.responseText;
+}
+
 function getQueryVariable(variable)
 {
        var query = window.location.search.substring(1);
@@ -32,5 +39,14 @@ function parseURIArg(blog_obj){
   var issue_id = getQueryVariable("issue_id");
   //console.log("action: " + action);
   if(action == false)  window.location = blog_obj.config["root"] + "index.html?action=home";
-  
+  else if(action == "home"){
+    var a = XHR("GET",blog_obj.config["root"] + blog_obj.config["html_path"] + "/home.html");
+    a.replace("%img_path%",blog_obj.config["img_path"]);
+    a.replace("%html_path%",blog_obj.config["html_path"]);
+    a.replace("%root%",blog_obj.config["root"]);
+    a.replace("%js_path%",blog_obj.config["js_path"]);
+    a.replace("%title%",blog_obj.config["title"]);
+    a.replace("%subtitle%",blog_obj.config["subtitle"]);
+    toWrite.innerHTML = a;
+  }
 }
