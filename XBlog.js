@@ -41,12 +41,12 @@ function parseURIArg(blog_obj){
   if(action == false)  window.location = blog_obj.config["root"] + "index.html?action=home";
   else if(action == "home"){
     var a = XHR("GET",blog_obj.config["root"] + blog_obj.config["html_path"] + "/home.html");
-    a.replace("%img_path%",blog_obj.config["img_path"]);
-    a.replace("%html_path%",blog_obj.config["html_path"]);
-    a.replace("%root%",blog_obj.config["root"]);
-    a.replace("%js_path%",blog_obj.config["js_path"]);
-    a.replace("%title%",blog_obj.config["title"]);
-    a.replace("%subtitle%",blog_obj.config["subtitle"]);
+    a.replace(/%img_path%/,blog_obj.config["img_path"]);
+    a.replace(/%html_path%/,blog_obj.config["html_path"]);
+    a.replace(/%root%/,blog_obj.config["root"]);
+    a.replace(/%js_path%/,blog_obj.config["js_path"]);
+    a.replace(/%title%/,blog_obj.config["title"]);
+    a.replace(/%subtitle%/,blog_obj.config["subtitle"]);
     console.log(a);
     toWrite.innerHTML = a;
   }
