@@ -3,6 +3,12 @@ function XHR(type,url){
   var xmlhttp=new XMLHttpRequest();
   xmlhttp.open(type,url,false);
   xmlhttp.send(null);
+  xmlhttp.responseText.replace(/__img_path__/g,blog_obj.config["img_path"]);
+  xmlhttp.responseText.replace(/__html_path__/g,blog_obj.config["html_path"]);
+  xmlhttp.responseText.replace(/__root__/g,blog_obj.config["root"]);
+  xmlhttp.responseText.replace(/__js_path__/g,blog_obj.config["js_path"]);
+  xmlhttp.responseText.replace(/__title__/g,blog_obj.config["title"]);
+  xmlhttp.responseText.replace(/__subtitle__/g,blog_obj.config["subtitle"]);
   return xmlhttp.responseText;
 }
 
@@ -41,12 +47,7 @@ function parseURIArg(blog_obj){
   if(action == false)  window.location = blog_obj.config["root"] + "index.html?action=home";
   else if(action == "home"){
     var a = XHR("GET",blog_obj.config["root"] + blog_obj.config["html_path"] + "/home.html");
-    a.replace(/%img_path%/g,blog_obj.config["img_path"]);
-    a.replace(/%html_path%/g,blog_obj.config["html_path"]);
-    a.replace(/%root%/g,blog_obj.config["root"]);
-    a.replace(/%js_path%/g,blog_obj.config["js_path"]);
-    a.replace(/%title%/g,blog_obj.config["title"]);
-    a.replace(/%subtitle%/g,blog_obj.config["subtitle"]);
+    xmlhttp.responseText
     console.log(a);
     document.body.innerHTML = a;
   }
