@@ -1,5 +1,5 @@
 var toWrite = document.getElementById("embedded");
-function XHR(var type,var url){
+function XHR(type,url){
   var xmlhttp=new XMLHttpRequest();
   xmlhttp.open(type,url,false);
   xmlhttp.send(null);
