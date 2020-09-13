@@ -1,5 +1,5 @@
 var toWrite = document.getElementById("embedded");
-function XHR(type,url){
+function XHR(type,url,blog_obj){
   var xmlhttp=new XMLHttpRequest();
   xmlhttp.open(type,url,false);
   xmlhttp.send(null);
@@ -46,7 +46,7 @@ function parseURIArg(blog_obj){
   console.log("action: " + action);
   if(action == false)  window.location = blog_obj.config["root"] + "index.html?action=home";
   else if(action == "home"){
-    var a = XHR("GET",blog_obj.config["root"] + blog_obj.config["html_path"] + "/home.html");
+    var a = XHR("GET",blog_obj.config["root"] + blog_obj.config["html_path"] + "/home.html",blog_obj);
     a.replace(/__img_path__/g,blog_obj.config["img_path"]);
     a.replace(/__html_path__/g,blog_obj.config["html_path"]);
     a.replace(/__root__/g,blog_obj.config["root"]);
