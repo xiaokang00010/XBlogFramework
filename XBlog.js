@@ -59,7 +59,9 @@ function parseURIArg(blog_obj){
       a.replace(/__title__/g,blog_obj.config["title"]);
       a.replace(/__subtitle__/g,blog_obj.config["subtitle"]);
     },200)
-    console.log(a);
-    document.body.innerHTML = a;
+    setTimeout(function(){
+      console.log(a);
+      document.body.innerHTML = a;
+    },200)
   }
 }
