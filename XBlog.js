@@ -7,12 +7,12 @@ function XHR(type,url,blog_obj){
   //setTimeout()
   var toReplace = xmlhttp.responseText;
   console.log("beforce:"+toReplace);
-  toReplace.replace(/__img_path__/g,blog_obj.config["img_path"]);
-  toReplace.replace(/__html_path__/g,blog_obj.config["html_path"]);
-  toReplace.replace(/__root__/g,blog_obj.config["root"]);
-  toReplace.replace(/__js_path__/g,blog_obj.config["js_path"]);
-  toReplace.replace(/__title__/g,blog_obj.config["title"]);
-  toReplace.replace(/__subtitle__/g,blog_obj.config["subtitle"]);
+  toReplace=toReplace.replace(/__img_path__/g,blog_obj.config["img_path"]);
+  toReplace=toReplace.replace(/__html_path__/g,blog_obj.config["html_path"]);
+  toReplace=toReplace.replace(/__root__/g,blog_obj.config["root"]);
+  toReplace=toReplace.replace(/__js_path__/g,blog_obj.config["js_path"]);
+  toReplace=toReplace.replace(/__title__/g,blog_obj.config["title"]);
+  toReplace=toReplace.replace(/__subtitle__/g,blog_obj.config["subtitle"]);
   console.log("after:"+toReplace);
   return toReplace;
 }
