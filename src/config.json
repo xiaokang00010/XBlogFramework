@@ -1,7 +1,7 @@
 {
   "title": "XBlog",
   "subtitle": "I will write xblog change log here.",
-  "root": "/XBlogFramework/",
+  "root": "/XBlogFramework",
   "img_path": "src/img",
   "html_path": "src/html",
   "js_path": "src/js",
