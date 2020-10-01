@@ -14,16 +14,16 @@ function XHR(type,url,blog_obj){
   toReplace=toReplace.replace(/__css_path__/g,blog_obj.config["css_path"]); 
   toReplace=toReplace.replace(/__title__/g,blog_obj.config["title"]);
   toReplace=toReplace.replace(/__subtitle__/g,blog_obj.config["subtitle"]); 
-  if(blog_obj.action == "page_config"){
+  if(blog_obj.config["page_config"] != undefined){
     // 是否存在page常量
-    if(blog_obj.config["home"]["const"] != undefined){
+    if(blog_obj.config["home"]["const"] != undefined && blog_obj.action == "home"){
       // 是则替换指定常量文本为指定字串
       for (let i = 0; i < blog_obj.config["home"]["const"].length; i++) {
         //blog_obj.config["home"]["const"][i];
         console.log("Replace Object At Home:",blog_obj.config["home"]["const"][i][0],"\nToReplace:",blog_obj.config["home"]["const"][i][1]);
         toReplace=toReplace.replace(blog_obj.config["home"]["const"][i][0],blog_obj.config["home"]["const"][i][1]);
       }
-    }else if(blog_obj.config["post"]["const"] != undefined){
+    }else if(blog_obj.config["post"]["const"] != undefined && blog_obj.action == "post"){
       // 是则替换指定常量文本为指定字串
       for (let i = 0; i < blog_obj.config["post"]["const"].length; i++) {
         //blog_obj.config["home"]["const"][i];
