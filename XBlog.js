@@ -1,16 +1,18 @@
 var toWrite = document.getElementById("embedded");
+var xmlhttp;
 function XHR(type,url,blog_obj){
   var xmlhttp=new XMLHttpRequest();
   xmlhttp.open(type,url,false);
   xmlhttp.send(null);
   //setTimeout()
-  xmlhttp.responseText.replace(/__img_path__/g,blog_obj.config["img_path"]);
-  xmlhttp.responseText.replace(/__html_path__/g,blog_obj.config["html_path"]);
-  xmlhttp.responseText.replace(/__root__/g,blog_obj.config["root"]);
-  xmlhttp.responseText.replace(/__js_path__/g,blog_obj.config["js_path"]);
-  xmlhttp.responseText.replace(/__title__/g,blog_obj.config["title"]);
-  xmlhttp.responseText.replace(/__subtitle__/g,blog_obj.config["subtitle"]);
-  return xmlhttp.responseText;
+  var toReplace = xmlhttp.responseText;
+  toReplace.replace(/__img_path__/g,blog_obj.config["img_path"]);
+  toReplace.replace(/__html_path__/g,blog_obj.config["html_path"]);
+  toReplace.replace(/__root__/g,blog_obj.config["root"]);
+  toReplace.replace(/__js_path__/g,blog_obj.config["js_path"]);
+  toReplace.replace(/__title__/g,blog_obj.config["title"]);
+  toReplace.replace(/__subtitle__/g,blog_obj.config["subtitle"]);
+  return toReplace;
 }
 
 function getQueryVariable(variable)
@@ -50,18 +52,8 @@ function parseURIArg(blog_obj){
   if(action == false)  window.location = blog_obj.config["root"] + "index.html?action=home";
   else if(action == "home"){
     //var a = XHR("GET",blog_obj.config["root"] + blog_obj.config["html_path"] + "/home.html",blog_obj);
-    setTimeout(function(){a = XHR("GET",blog_obj.config["root"] + blog_obj.config["html_path"] + "/home.html",blog_obj);},20);
-    setTimeout(function(){
-      a.replace(/__img_path__/g,blog_obj.config["img_path"]);
-      a.replace(/__html_path__/g,blog_obj.config["html_path"]);
-      a.replace(/__root__/g,blog_obj.config["root"]);
-      a.replace(/__js_path__/g,blog_obj.config["js_path"]);
-      a.replace(/__title__/g,blog_obj.config["title"]);
-      a.replace(/__subtitle__/g,blog_obj.config["subtitle"]);
-    },200)
-    setTimeout(function(){
-      console.log(a);
-      document.body.innerHTML = a;
-    },200)
+    a = XHR("GET",blog_obj.config["root"] + blog_obj.config["html_path"] + "/home.html",blog_obj);
+    console.log(a);
+    document.body.innerHTML = a;
   }
 }
