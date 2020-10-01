@@ -1,5 +1,5 @@
 var toWrite = document.getElementById("embedded");
-var xmlhttp;
+//var xmlhttp;
 function XHR(type,url,blog_obj){
   var xmlhttp=new XMLHttpRequest();
   xmlhttp.open(type,url,false);
@@ -14,6 +14,24 @@ function XHR(type,url,blog_obj){
   toReplace=toReplace.replace(/__css_path__/g,blog_obj.config["css_path"]); 
   toReplace=toReplace.replace(/__title__/g,blog_obj.config["title"]);
   toReplace=toReplace.replace(/__subtitle__/g,blog_obj.config["subtitle"]); 
+  if(blog_obj.action == "page_config"){
+    // 是否存在page常量
+    if(blog_obj.config["home"]["const"] != undefined){
+      // 是则替换指定常量文本为指定字串
+      for (let i = 0; i < blog_obj.config["home"]["const"].length; i++) {
+        //blog_obj.config["home"]["const"][i];
+        console.log("Replace Object At Home:",blog_obj.config["home"]["const"][i][0],"\nToReplace:",blog_obj.config["home"]["const"][i][1]);
+        toReplace=toReplace.replace(blog_obj.config["home"]["const"][i][0],blog_obj.config["home"]["const"][i][1]);
+      }
+    }else if(blog_obj.config["post"]["const"] != undefined){
+      // 是则替换指定常量文本为指定字串
+      for (let i = 0; i < blog_obj.config["post"]["const"].length; i++) {
+        //blog_obj.config["home"]["const"][i];
+        console.log("Replace Object At Post:",blog_obj.config["post"]["const"][i][0],"\nToReplace:",blog_obj.config["post"]["const"][i][1]);
+        toReplace=toReplace.replace(blog_obj.config["post"]["const"][i][0],blog_obj.config["post"]["const"][i][1]);
+      }
+    }
+  }
   console.log("after:"+toReplace);
   return toReplace;
 }
@@ -50,7 +68,9 @@ var a = "";
 
 function parseURIArg(blog_obj){
   var action = getQueryVariable("action");
+  blog_obj.action = action;
   var issue_id = getQueryVariable("issue_id");
+  blog_obj.issue_id = issue_id;
   console.log("action: " + action);
   if(action == false)  window.location = blog_obj.config["root"] + "index.html?action=home";
   else if(action == "home"){

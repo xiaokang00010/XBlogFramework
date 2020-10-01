@@ -6,5 +6,10 @@
   "html_path": "src/html",
   "js_path": "src/js",
   "css_path": "src/css",
-  "github_issues_repo": "XBlogFramework"
+  "github_issues_repo": "XBlogFramework",
+  "page_config": {
+    "home": {
+      "const": [["$(div_head_box)", "img#HeadImg{position: fixed;}"]]
+    }
+  }
 }
